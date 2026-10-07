@@ -483,7 +483,7 @@ const AdminProductFormPage = () => {
                     className="field"
                     value={form.leadTime}
                     onChange={(event) => set("leadTime", event.target.value)}
-                    placeholder="2 weeks after full payment"
+                    placeholder="2-3 weeks"
                   />
                 </div>
               )}

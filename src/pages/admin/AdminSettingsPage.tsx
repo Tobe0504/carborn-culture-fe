@@ -14,11 +14,11 @@ const FIELDS: { key: keyof StoreSettings; label: string; hint?: string; placehol
     hint: "Orders are sent here. Country code, no + or spaces, e.g. 2348033008048.",
   },
   { key: "phoneDisplay", label: "Phone (as shown on site)", placeholder: "+234 803 300 8048" },
-  { key: "instagramHandle", label: "Instagram handle", placeholder: "carbonculture" },
+  { key: "instagramHandle", label: "Instagram handle", placeholder: "carboncultureng" },
   { key: "email", label: "Email", placeholder: "hello@carbonculture.ng" },
   { key: "address", label: "Studio address" },
   { key: "deliveryNote", label: "Lagos delivery note", placeholder: "Within 3 working days" },
-  { key: "madeToOrderNote", label: "Made-to-order note", placeholder: "Iro & Buba takes 2 weeks after full payment" },
+  { key: "madeToOrderNote", label: "Made-to-order note", placeholder: "Customized Iro & Buba takes 2-3 weeks" },
   { key: "announcement", label: "Announcement bar", hint: "Optional. Shown above the header on every page." },
 ];
 

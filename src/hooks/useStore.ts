@@ -5,11 +5,11 @@ import type { StoreSettings } from "@/types";
 export const FALLBACK_SETTINGS: StoreSettings = {
   whatsappNumber: "2348033008048",
   phoneDisplay: "+234 803 300 8048",
-  instagramHandle: "carbonculture",
+  instagramHandle: "carboncultureng",
   email: "",
   address: "3rd Floor, Engineering Close, Victoria Island, Lagos",
   deliveryNote: "Within 3 working days",
-  madeToOrderNote: "Iro & Buba takes 2 weeks after full payment",
+  madeToOrderNote: "Customized Iro & Buba takes 2-3 weeks",
   announcement: "",
 };
 

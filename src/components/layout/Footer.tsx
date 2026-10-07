@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useSettings } from "@/hooks/useStore";
 
 const Footer = () => {
@@ -29,18 +28,13 @@ const Footer = () => {
           </p>
         </div>
         <div className="space-y-1">
-          <p className="mb-3 text-2xs uppercase tracking-[0.16em] text-stone">Visit</p>
+          <p className="mb-3 text-2xs uppercase tracking-[0.16em] text-stone">Pick up</p>
           <p>{settings.address}</p>
         </div>
         <div className="space-y-1">
-          <p className="mb-3 text-2xs uppercase tracking-[0.16em] text-stone">Information</p>
-          <p>Lagos delivery: {settings.deliveryNote.toLowerCase()}</p>
-          <p>{settings.madeToOrderNote}</p>
-          <p>
-            <Link to="/our-story" className="hover:underline">
-              About Carbon Culture
-            </Link>
-          </p>
+          <p className="mb-3 text-2xs uppercase tracking-[0.16em] text-stone">Order Fulfillment</p>
+          <p>Customized Iro & Buba</p>
+          <p className="text-stone">2-3 weeks</p>
         </div>
       </div>
       <div className="mx-auto max-w-site border-t border-line px-4 py-5 text-2xs text-stone sm:px-6">
