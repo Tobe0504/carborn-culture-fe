@@ -8,8 +8,7 @@
   }
 
   body {
-    @apply bg-paper font-serif text-sm text-ink antialiased;
-    font-optical-sizing: auto;
+    @apply bg-paper font-sans text-sm text-ink antialiased;
     text-rendering: optimizeLegibility;
   }
 
@@ -52,19 +51,19 @@
   }
 
   .display {
-    @apply font-normal leading-[1.15] tracking-[-0.005em];
+    @apply font-normal leading-tight;
   }
 
   .btn {
-    @apply inline-flex items-center justify-between gap-6 bg-ink px-4 py-3.5 text-xs text-paper transition-colors duration-200 hover:bg-ink-soft disabled:pointer-events-none disabled:opacity-40;
+    @apply inline-flex items-center justify-center gap-2 bg-ink px-6 py-3 text-xs uppercase tracking-[0.12em] text-paper transition-colors duration-200 hover:bg-ink-soft disabled:pointer-events-none disabled:opacity-40;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-between gap-6 border border-ink px-4 py-3.5 text-xs text-ink transition-colors duration-200 hover:bg-ink hover:text-paper disabled:pointer-events-none disabled:opacity-40;
+    @apply inline-flex items-center justify-center gap-2 border border-ink px-6 py-3 text-xs uppercase tracking-[0.12em] text-ink transition-colors duration-200 hover:bg-ink hover:text-paper disabled:pointer-events-none disabled:opacity-40;
   }
 
   .btn-whatsapp {
-    @apply inline-flex items-center justify-between gap-6 border border-ink bg-transparent px-4 py-3.5 text-xs text-ink transition-colors duration-200 hover:bg-ink hover:text-paper disabled:pointer-events-none disabled:opacity-40;
+    @apply inline-flex items-center justify-center gap-2 border border-ink bg-transparent px-6 py-3 text-xs uppercase tracking-[0.12em] text-ink transition-colors duration-200 hover:bg-ink hover:text-paper disabled:pointer-events-none disabled:opacity-40;
   }
 
   .text-link {

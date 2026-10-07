@@ -2,8 +2,6 @@ import { useState, type FormEvent } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import Logo from "@/components/layout/Logo";
-import { BRAND_IMAGES } from "@/lib/brandImages";
-import { sizedImage } from "@/lib/image";
 import { useAuth } from "@/context/AuthContext";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
@@ -36,19 +34,11 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <div className="grid min-h-screen lg:grid-cols-2">
-      <div className="relative hidden overflow-hidden bg-ink lg:block">
-        <img src={sizedImage(BRAND_IMAGES.faceMotifGarden, 1400)} alt="" className="h-full w-full object-cover object-[center_30%]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
-        <p className="absolute bottom-10 left-10 max-w-sm text-[28px] font-light leading-snug text-paper">
-          Manage the collection, keep the story moving.
-        </p>
-      </div>
-      <div className="flex items-center justify-center bg-cream px-6 py-16">
+    <div className="flex min-h-screen items-center justify-center bg-paper px-6 py-16">
         <form onSubmit={submit} className="w-full max-w-sm" noValidate>
           <Logo variant="mark" className="h-28" />
-          <h1 className="mt-10 text-[32px] font-light">Studio sign in</h1>
-          <p className="mt-1 text-[15px] text-stone">For Carbon Culture staff only.</p>
+          <h1 className="mt-8 text-[24px]">Admin sign in</h1>
+          <p className="mt-1 text-xs text-stone">For Carbon Culture staff only.</p>
 
           <div className="mt-8 space-y-5">
             <div>
@@ -88,7 +78,6 @@ const AdminLoginPage = () => {
             Sign in
           </button>
         </form>
-      </div>
     </div>
   );
 };

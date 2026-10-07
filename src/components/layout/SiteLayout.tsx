@@ -17,11 +17,8 @@ const useScrollManager = () => {
   }, [pathname, hash]);
 };
 
-const OVERLAY_ROUTES = ["/", "/collections", "/our-story"];
-
 const SiteLayout = () => {
   useScrollManager();
-  const { pathname } = useLocation();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -31,7 +28,7 @@ const SiteLayout = () => {
       >
         Skip to content
       </a>
-      <Header overlay={OVERLAY_ROUTES.includes(pathname)} />
+      <Header />
       <main id="main" className="flex-1">
         <Outlet />
       </main>

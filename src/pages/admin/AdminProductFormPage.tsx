@@ -451,15 +451,18 @@ const AdminProductFormPage = () => {
                 onChange={(value) => set("soldOut", value)}
               />
               <div>
-                <label htmlFor="sortOrder" className="field-label">Display order</label>
+                <label htmlFor="sortOrder" className="field-label">Order</label>
                 <input
                   id="sortOrder"
                   type="number"
+                  min={0}
                   className="field tabular"
                   value={form.sortOrder}
                   onChange={(event) => set("sortOrder", event.target.value)}
                 />
-                <p className="mt-1.5 text-[13px] text-stone">Lower numbers show first.</p>
+                <p className="mt-1.5 text-[13px] text-stone">
+                  Position in product listings. 1 shows first, then 2, and so on.
+                </p>
               </div>
             </div>
           </Panel>

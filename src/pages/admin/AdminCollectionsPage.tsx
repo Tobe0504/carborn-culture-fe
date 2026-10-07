@@ -1,22 +1,20 @@
 import { useState, type FormEvent } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ImagePlus, Loader2, Pencil, Plus, Trash2 } from "lucide-react";
+import { Loader2, Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { AdminPageHeader, ConfirmDialog, Panel } from "@/components/admin/AdminUI";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { api } from "@/lib/api";
-import { sizedImage } from "@/lib/image";
 import type { Collection } from "@/types";
 
 interface Draft {
   id?: string;
   name: string;
   description: string;
-  image: string;
   sortOrder: number;
 }
 
-const EMPTY: Draft = { name: "", description: "", image: "", sortOrder: 0 };
+const EMPTY: Draft = { name: "", description: "", sortOrder: 0 };
 
 const CollectionEditor = ({
   initial,
@@ -27,14 +25,12 @@ const CollectionEditor = ({
 }) => {
   const queryClient = useQueryClient();
   const [draft, setDraft] = useState(initial);
-  const [uploading, setUploading] = useState(false);
 
   const save = useMutation({
     mutationFn: () => {
       const input = {
         name: draft.name.trim(),
         description: draft.description.trim(),
-        image: draft.image,
         sortOrder: Number(draft.sortOrder) || 0,
       };
       return draft.id ? api.admin.updateCollection(draft.id, input) : api.admin.createCollection(input);
@@ -49,19 +45,6 @@ const CollectionEditor = ({
     onError: (error) => toast.error(error.message),
   });
 
-  const upload = async (file: File | undefined) => {
-    if (!file) return;
-    setUploading(true);
-    try {
-      const image = await api.admin.uploadImage(file);
-      setDraft((current) => ({ ...current, image: image.url }));
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Upload failed");
-    } finally {
-      setUploading(false);
-    }
-  };
-
   const submit = (event: FormEvent) => {
     event.preventDefault();
     if (draft.name.trim().length < 2) {
@@ -72,24 +55,7 @@ const CollectionEditor = ({
   };
 
   return (
-    <form onSubmit={submit} className="grid gap-5 sm:grid-cols-[140px_1fr]">
-      <label className="relative flex aspect-[3/4] cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden border border-dashed border-line bg-cream text-[12px] text-stone transition-colors hover:border-ink">
-        {draft.image ? (
-          <img src={sizedImage(draft.image, 300)} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        ) : uploading ? (
-          <Loader2 className="h-5 w-5 animate-spin" />
-        ) : (
-          <>
-            <ImagePlus className="h-5 w-5" strokeWidth={1.2} /> Cover image
-          </>
-        )}
-        <input
-          type="file"
-          accept="image/jpeg,image/png,image/webp,image/avif"
-          className="sr-only"
-          onChange={(event) => void upload(event.target.files?.[0])}
-        />
-      </label>
+    <form onSubmit={submit}>
       <div className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-[1fr_120px]">
           <div>
@@ -129,7 +95,7 @@ const CollectionEditor = ({
           <button type="button" onClick={onDone} className="btn-outline px-5 py-3">
             Cancel
           </button>
-          <button type="submit" className="btn px-5 py-3" disabled={save.isPending || uploading}>
+          <button type="submit" className="btn px-5 py-3" disabled={save.isPending}>
             {save.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
             {draft.id ? "Save" : "Create"}
           </button>
@@ -196,11 +162,6 @@ const AdminCollectionsPage = () => {
                   <CollectionEditor initial={collection} onDone={() => setEditing(null)} />
                 ) : (
                   <div className="flex items-center gap-4">
-                    {collection.image ? (
-                      <img src={sizedImage(collection.image, 140)} alt="" className="h-[60px] w-[45px] bg-sand object-cover" />
-                    ) : (
-                      <span className="h-[60px] w-[45px] bg-sand" />
-                    )}
                     <div className="min-w-0 flex-1">
                       <p className="text-[15px]">{collection.name}</p>
                       <p className="truncate text-[13px] text-stone">
