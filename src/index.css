@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper font-serif text-sm text-ink antialiased;
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-ink text-paper;
+  }
+
+  :focus-visible {
+    @apply outline outline-1 outline-offset-2 outline-ink;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-normal;
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply text-xs text-stone;
+  }
+
+  .label {
+    @apply text-xs;
+  }
+
+  .display {
+    @apply font-normal leading-[1.15] tracking-[-0.005em];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-between gap-6 bg-ink px-4 py-3.5 text-xs text-paper transition-colors duration-200 hover:bg-ink-soft disabled:pointer-events-none disabled:opacity-40;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-between gap-6 border border-ink px-4 py-3.5 text-xs text-ink transition-colors duration-200 hover:bg-ink hover:text-paper disabled:pointer-events-none disabled:opacity-40;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-between gap-6 border border-ink bg-transparent px-4 py-3.5 text-xs text-ink transition-colors duration-200 hover:bg-ink hover:text-paper disabled:pointer-events-none disabled:opacity-40;
+  }
+
+  .text-link {
+    @apply underline decoration-1 underline-offset-[5px] transition-opacity hover:opacity-60;
+  }
+
+  .link-underline {
+    @apply decoration-1 underline-offset-[5px] hover:underline;
+  }
+
+  .hairline {
+    @apply border-line;
+  }
+
+  .field {
+    @apply w-full border-0 border-b border-line bg-transparent px-0 py-2.5 text-sm text-ink placeholder:text-stone transition-colors focus:border-ink focus:outline-none;
+  }
+
+  .field-label {
+    @apply mb-1 block text-xs text-stone;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
