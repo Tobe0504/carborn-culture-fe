@@ -1,59 +1,44 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import ProductCard, { ProductCardSkeleton, ProductGrid } from "@/components/product/ProductCard";
-import { useCollections, useProducts, useSettings } from "@/hooks/useStore";
+import CategoryShop from "@/components/product/CategoryShop";
+import { useSettings } from "@/hooks/useStore";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { whatsappLink } from "@/lib/whatsapp";
 
 const STEPS = [
   ["Choose", "Pick your piece, size and colour, and add it to your bag."],
   ["Send", "Your bag is sent to us as one WhatsApp message."],
-  ["Receive", "We confirm fit and payment, then deliver in Lagos or prepare it for collection."],
+  ["Receive", "We confirm fit and payment, then deliver in Lagos or prepare it for pick up."],
 ];
 
 const HomePage = () => {
   const settings = useSettings();
-  const { data: collections = [] } = useCollections();
-  const products = useProducts({ limit: 12 });
+  const [category, setCategory] = useState("");
   useDocumentTitle();
 
   return (
     <div className="mx-auto max-w-site px-4 sm:px-6">
-      <section className="py-10 sm:py-14">
+      <section className="flex min-h-[calc(100svh-4rem)] flex-col justify-center py-16 sm:min-h-[70vh]">
         <p className="text-2xs uppercase tracking-[0.16em] text-stone">African. Relaxed. Sustainable.</p>
-        <h1 className="mt-3 max-w-2xl text-[26px] leading-snug sm:text-[32px]">
-          Contemporary African clothing, designed for real life.
-        </h1>
-        <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-[0.12em]">
-          <Link to="/collections" className="underline underline-offset-[6px] hover:opacity-60">
-            Shop all
+        <h1 className="mt-4 text-[34px] leading-tight sm:text-[48px]">About Carbon Culture</h1>
+        <p className="mt-5 max-w-xl text-sm leading-relaxed text-ink-soft">
+          Carbon Culture is a contemporary African fashion brand celebrating effortless style, individuality and the
+          beauty of African-inspired design. Relaxed silhouettes, expressive details and a modern African aesthetic,
+          made to be lived in.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a href="#shop" className="btn">
+            Shop the collection
+          </a>
+          <Link to="/our-story" className="btn-outline">
+            Our story
           </Link>
-          {collections.map((collection) => (
-            <Link key={collection.id} to={`/collections?c=${collection.slug}`} className="hover:opacity-60">
-              {collection.name}
-            </Link>
-          ))}
         </div>
       </section>
 
-      <section aria-label="Products">
-        <ProductGrid>
-          {products.isLoading
-            ? Array.from({ length: 8 }, (_, index) => <ProductCardSkeleton key={index} />)
-            : products.data?.map((product, index) => (
-                <ProductCard key={product.id} product={product} priority={index < 4} />
-              ))}
-        </ProductGrid>
-        {products.data?.length === 0 && <p className="py-16 text-center text-xs text-stone">New pieces coming soon.</p>}
-        {products.isError && (
-          <p className="py-16 text-center text-xs text-stone">We couldn't load the products. Please refresh.</p>
-        )}
-        {(products.data?.length ?? 0) >= 12 && (
-          <div className="mt-10 text-center">
-            <Link to="/collections" className="btn">
-              View all products
-            </Link>
-          </div>
-        )}
+      <section id="shop" className="scroll-mt-20 border-t border-line pt-10">
+        <h2 className="mb-6 text-[24px] sm:text-[28px]">Shop the collection</h2>
+        <CategoryShop active={category} onSelect={setCategory} />
       </section>
 
       <section id="order" className="mt-12 scroll-mt-20 border-t border-line pt-10">

@@ -9,6 +9,7 @@ import Logo from "./Logo";
 const LINKS = [
   { to: "/collections", label: "Shop" },
   { to: "/our-story", label: "About" },
+  { to: "/contact", label: "Contact" },
 ];
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -65,9 +66,6 @@ const Header = () => {
                   {link.label}
                 </NavLink>
               ))}
-              <a href="#contact" className="text-xs uppercase tracking-[0.12em] transition-opacity hover:opacity-60">
-                Contact
-              </a>
             </nav>
 
             <div className="-mr-2 flex items-center">
@@ -146,13 +144,6 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
-              className="border-b border-line py-4 text-sm uppercase tracking-[0.12em]"
-            >
-              Contact
-            </a>
           </nav>
         </div>
       </div>

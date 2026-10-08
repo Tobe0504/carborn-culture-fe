@@ -5,7 +5,7 @@ const Footer = () => {
   const handle = settings.instagramHandle.replace(/^@/, "");
 
   return (
-    <footer id="contact" className="mt-12 scroll-mt-20 border-t border-line">
+    <footer className="mt-12 border-t border-line">
       <div className="mx-auto grid max-w-site gap-8 px-4 py-10 text-xs sm:grid-cols-3 sm:px-6">
         <div className="space-y-1">
           <p className="mb-3 text-2xs uppercase tracking-[0.16em] text-stone">Contact</p>

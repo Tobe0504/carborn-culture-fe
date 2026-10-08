@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Gallery from "@/components/product/Gallery";
-import ProductCard, { ProductGrid } from "@/components/product/ProductCard";
 import { AccordionItem } from "@/components/ui/Accordion";
 import { useBag } from "@/context/BagContext";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
@@ -212,16 +211,6 @@ const ProductPage = () => {
         </div>
       </section>
 
-      {data.related.length > 0 && (
-        <section className="mt-16 border-t border-line py-10">
-          <h2 className="mb-6 text-2xs uppercase tracking-[0.16em] text-stone">You may also like</h2>
-          <ProductGrid>
-            {data.related.map((related) => (
-              <ProductCard key={related.id} product={related} />
-            ))}
-          </ProductGrid>
-        </section>
-      )}
     </div>
   );
 };

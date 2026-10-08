@@ -6,6 +6,7 @@ import SiteLayout from "@/components/layout/SiteLayout";
 import { AuthProvider } from "@/context/AuthContext";
 import { BagProvider } from "@/context/BagContext";
 import CollectionsPage from "@/pages/CollectionsPage";
+import ContactPage from "@/pages/ContactPage";
 import HomePage from "@/pages/HomePage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import ProductPage from "@/pages/ProductPage";
@@ -37,6 +38,7 @@ const App = () => (
                 <Route path="our-story" element={<StoryPage />} />
                 <Route path="collections" element={<CollectionsPage />} />
                 <Route path="product/:slug" element={<ProductPage />} />
+                <Route path="contact" element={<ContactPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Route>
               <Route path="admin/login" element={<AdminLoginPage />} />
